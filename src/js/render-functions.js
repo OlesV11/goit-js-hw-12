@@ -1,8 +1,10 @@
 import SimpleLightbox from "simplelightbox";
+
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const galleryContainer = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+// const loadMoreBtn = document.querySelector('.load-more');
 
 const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
@@ -38,16 +40,42 @@ export function createGallery(images) {
 
     galleryContainer.insertAdjacentHTML('beforeend', markup);
     lightbox.refresh();
-}
+};
 
 export function clearGallery() {
     galleryContainer.innerHTML = '';
-}
+};
 
 export function showLoader() {
-    loader.classList.add('visible');
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.add('visible');
+    } else {
+        console.error('Loader element not found.');
+    }
 }
 
 export function hideLoader() {
-    loader.classList.remove('visible');
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.remove('visible');
+    } else {
+        console.error('Loader element not found.');
+    }
+}
+
+export function showLoadMoreButton() {
+    const loadMoreBtn = document.querySelector('.load-more');
+    if (loadMoreBtn) {
+        loadMoreBtn.classList.add('visible');
+    } else {
+        console.error('Load More button not found.');
+    }
+}
+
+export function hideLoadMoreButton() {
+    const loadMoreBtn = document.querySelector('.load-more');
+    if (loadMoreBtn) {
+        loadMoreBtn.classList.remove('visible');
+    }
 }
